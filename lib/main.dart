@@ -3,19 +3,19 @@ import 'package:flutter/widgets.dart';
 
 main() => runApp(QuizApp());
 
-class QuizAppState extends State<QuizApp> {
-  var perguntaSelecionada = 0;
+class _QuizAppState extends State<QuizApp> {
+  var _perguntaSelecionada = 0;
   final perguntas = [
     'Qual é a sua cor favorita?',
     'Qual é o seu animal favorito?',
   ];
 
-  void responder() {
+  void _responder() {
     setState(() {
-      perguntaSelecionada++;
+      _perguntaSelecionada++;
     });
 
-    print(perguntaSelecionada);
+    print(_perguntaSelecionada);
   }
 
   void Function() resposta3Function() {
@@ -33,10 +33,10 @@ class QuizAppState extends State<QuizApp> {
         ),
         body: Column(
           children: [
-            Text(perguntas.elementAt(perguntaSelecionada)),
+            Text(perguntas.elementAt(_perguntaSelecionada)),
             RaisedButton(
               child: Text('Resposta 1'),
-              onPressed: responder,
+              onPressed: _responder,
             ),
             RaisedButton(
               child: Text('Resposta 2'),
@@ -60,7 +60,7 @@ class QuizAppState extends State<QuizApp> {
 }
 
 class QuizApp extends StatefulWidget {
-  QuizAppState createState() {
-    return QuizAppState();
+  _QuizAppState createState() {
+    return _QuizAppState();
   }
 }
