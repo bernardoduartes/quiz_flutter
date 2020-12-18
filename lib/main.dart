@@ -3,14 +3,29 @@ import 'package:flutter/widgets.dart';
 
 main() => runApp(QuizApp());
 
-class QuizApp extends StatelessWidget {
+class QuizAppState extends State<QuizApp> {
+  var perguntaSelecionada = 0;
+  final perguntas = [
+    'Qual é a sua cor favorita?',
+    'Qual é o seu animal favorito?',
+  ];
+
+  void responder() {
+    setState(() {
+      perguntaSelecionada++;
+    });
+
+    print(perguntaSelecionada);
+  }
+
+  void Function() resposta3Function() {
+    return () {
+      print('Pergunta 3 respondida!');
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
-    final perguntas = [
-      'Qual é a sua cor favorita?',
-      'Qual é o seu animal favorito?',
-    ];
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -18,16 +33,16 @@ class QuizApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text(perguntas.elementAt(1)),
+            Text(perguntas.elementAt(perguntaSelecionada)),
             RaisedButton(
               child: Text('Resposta 1'),
-              onPressed: () {
-                print('Pergunta 1 respondida!');
-              },
+              onPressed: responder,
             ),
             RaisedButton(
               child: Text('Resposta 2'),
-              onPressed: resposta2,
+              onPressed: () {
+                print('Pergunta 2 respondida!');
+              },
             ),
             RaisedButton(
               child: Text('Resposta 3'),
@@ -42,14 +57,10 @@ class QuizApp extends StatelessWidget {
       ),
     );
   }
+}
 
-  void resposta2() {
-    print('Pergunta 2 respondida!');
-  }
-
-  void Function() resposta3Function() {
-    return () {
-      print('Pergunta 3 respondida!');
-    };
+class QuizApp extends StatefulWidget {
+  QuizAppState createState() {
+    return QuizAppState();
   }
 }
