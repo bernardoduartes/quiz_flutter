@@ -7,20 +7,6 @@ main() => runApp(QuizApp());
 
 class _QuizAppState extends State<QuizApp> {
   var _perguntaSelecionada = 0;
-  final _perguntas = const [
-    {
-      'texto': 'Qual é a sua cor favorita?',
-      'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco'],
-    },
-    {
-      'texto': 'Qual é o seu animal favorito?',
-      'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão'],
-    },
-    {
-      'texto': 'Qual é o seu instrutor favorito?',
-      'respostas': ['Maria', 'João', 'Leo', 'Pedro'],
-    }
-  ];
 
   void _responder() {
     setState(() {
@@ -38,6 +24,25 @@ class _QuizAppState extends State<QuizApp> {
 
   @override
   Widget build(BuildContext context) {
+    final perguntas = [
+      {
+        'texto': 'Qual é a sua cor favorita?',
+        'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco'],
+      },
+      {
+        'texto': 'Qual é o seu animal favorito?',
+        'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão'],
+      },
+      {
+        'texto': 'Qual é o seu instrutor favorito?',
+        'respostas': ['Maria', 'João', 'Leo', 'Pedro'],
+      }
+    ];
+
+    List<Widget> respostas = [];
+    for (String textoResp in perguntas[_perguntaSelecionada]['respostas']) {
+      respostas.add(Response(textoResp, _responder));
+    }
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -45,10 +50,8 @@ class _QuizAppState extends State<QuizApp> {
         ),
         body: Column(
           children: [
-            Question(_perguntas[_perguntaSelecionada]['texto']),
-            Response("Resposta 1", _responder),
-            Response("Resposta 2", _responder),
-            Response("Resposta 3", _responder),
+            Question(perguntas[_perguntaSelecionada]['texto']),
+            ...respostas,
           ],
         ),
       ),
