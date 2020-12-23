@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class Response extends StatelessWidget {
   final String text;
@@ -7,6 +8,9 @@ class Response extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    return RaisedButton(
+      child: Text(text),
+      onPressed: null,
+    );
   }
 }

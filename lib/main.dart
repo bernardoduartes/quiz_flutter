@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:quiz_flutter/question.dart';
+import 'package:quiz_flutter/response.dart';
 
 main() => runApp(QuizApp());
 
@@ -35,24 +36,9 @@ class _QuizAppState extends State<QuizApp> {
         body: Column(
           children: [
             Question(perguntas[_perguntaSelecionada]),
-            RaisedButton(
-              child: Text('Resposta 1'),
-              onPressed: _responder,
-            ),
-            RaisedButton(
-              child: Text('Resposta 2'),
-              onPressed: () {
-                print('Pergunta 2 respondida!');
-              },
-            ),
-            RaisedButton(
-              child: Text('Resposta 3'),
-              onPressed: resposta3Function(),
-            ),
-            RaisedButton(
-              child: Text('Resposta 4'),
-              onPressed: () => print('Pergunta 4 respondida!'),
-            ),
+            Response("Resposta 1"),
+            Response("Resposta 2"),
+            Response("Resposta31"),
           ],
         ),
       ),
