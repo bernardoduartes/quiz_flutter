@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:quiz_flutter/question.dart';
 import 'package:quiz_flutter/response.dart';
+import 'package:quiz_flutter/result.dart';
 
 main() => runApp(QuizApp());
 
@@ -58,7 +59,7 @@ class _QuizAppState extends State<QuizApp> {
                   ...respostas.map((r) => Response(r, _onPressed)).toList(),
                 ],
               )
-            : null,
+            : Result('Parabéns!'),
       ),
     );
   }
