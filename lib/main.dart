@@ -8,7 +8,7 @@ main() => runApp(QuizApp());
 class _QuizAppState extends State<QuizApp> {
   var _perguntaSelecionada = 0;
 
-  void _responder() {
+  void _onPressed() {
     setState(() {
       _perguntaSelecionada++;
     });
@@ -39,10 +39,16 @@ class _QuizAppState extends State<QuizApp> {
       }
     ];
 
-    List<Widget> respostas = [];
-    for (String textoResp in perguntas[_perguntaSelecionada]['respostas']) {
-      respostas.add(Response(textoResp, _responder));
-    }
+    List<String> respostas = perguntas[_perguntaSelecionada]['respostas']);
+    List<Widget> widgets = respostas
+      .map((r) => Response(r, _onPressed))
+      .toList();
+
+
+   // for (String textoResp in respostas) {
+   //   widgets.add(Response(textoResp, _responder));
+   // }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -51,7 +57,7 @@ class _QuizAppState extends State<QuizApp> {
         body: Column(
           children: [
             Question(perguntas[_perguntaSelecionada]['texto']),
-            ...respostas,
+            ...widgets,
           ],
         ),
       ),
