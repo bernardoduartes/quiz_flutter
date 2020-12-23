@@ -40,12 +40,8 @@ class _QuizAppState extends State<QuizApp> {
     ];
 
     List<String> respostas = perguntas[_perguntaSelecionada]['respostas']);
-    List<Widget> widgets = respostas
-      .map((r) => Response(r, _onPressed))
-      .toList();
-
-
-   // for (String textoResp in respostas) {
+    
+       // for (String textoResp in respostas) {
    //   widgets.add(Response(textoResp, _responder));
    // }
 
@@ -57,7 +53,7 @@ class _QuizAppState extends State<QuizApp> {
         body: Column(
           children: [
             Question(perguntas[_perguntaSelecionada]['texto']),
-            ...widgets,
+            ...respostas.map((r) => Response(r, _onPressed)).toList(),
           ],
         ),
       ),
