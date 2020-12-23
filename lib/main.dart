@@ -7,9 +7,19 @@ main() => runApp(QuizApp());
 
 class _QuizAppState extends State<QuizApp> {
   var _perguntaSelecionada = 0;
-  final perguntas = [
-    'Qual é a sua cor favorita?',
-    'Qual é o seu animal favorito?',
+  final _perguntas = const [
+    {
+      'texto': 'Qual é a sua cor favorita?',
+      'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco'],
+    },
+    {
+      'texto': 'Qual é o seu animal favorito?',
+      'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão'],
+    },
+    {
+      'texto': 'Qual é o seu instrutor favorito?',
+      'respostas': ['Maria', 'João', 'Leo', 'Pedro'],
+    }
   ];
 
   void _responder() {
@@ -35,7 +45,7 @@ class _QuizAppState extends State<QuizApp> {
         ),
         body: Column(
           children: [
-            Question(perguntas[_perguntaSelecionada]),
+            Question(_perguntas[_perguntaSelecionada]['texto']),
             Response("Resposta 1", _responder),
             Response("Resposta 2", _responder),
             Response("Resposta 3", _responder),
