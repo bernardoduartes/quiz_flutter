@@ -47,6 +47,11 @@ class _QuizAppState extends State<QuizApp> {
     }
   }
 
+  void _reiniciarQuestionario() {
+    _perguntaSelecionada = 0;
+    _pontuacaoTotal = 0;
+  }
+
   void Function() resposta3Function() {
     return () {
       print('Pergunta 3 respondida!');
@@ -70,7 +75,7 @@ class _QuizAppState extends State<QuizApp> {
                 perguntaSelecionada: _perguntaSelecionada,
                 onPressed: _onPressed,
               )
-            : Result(_pontuacaoTotal),
+            : Result(_pontuacaoTotal, _reiniciarQuestionario),
       ),
     );
   }
